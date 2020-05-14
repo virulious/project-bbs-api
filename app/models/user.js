@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
+const postSchema = require('./posts')
 
-const userSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+
+const userSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -11,6 +14,8 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   token: String
+}, {
+  posts: [postSchema]
 }, {
   timestamps: true,
   toObject: {
