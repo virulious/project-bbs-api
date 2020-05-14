@@ -13,10 +13,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  userName: {
-    type: String,
-    required: false
-  },
   token: String
 }, {
   posts: [postSchema]
