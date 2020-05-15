@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const postSchema = require('./posts')
+const postSchema = require('./posts.js')
 
 const Schema = mongoose.Schema
 
@@ -15,7 +15,7 @@ const userSchema = new Schema({
   },
   token: String
 }, {
-  posts: [postSchema]
+  posts: postSchema
 }, {
   timestamps: true,
   toObject: {

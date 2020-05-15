@@ -18,6 +18,4 @@ const postSchema = new Schema({
   token: String
 })
 
-module.exports = {
-  postSchema
-}
+module.exports = postSchema
