@@ -13,9 +13,8 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  posts: [postSchema],
   token: String
-}, {
-  posts: postSchema
 }, {
   timestamps: true,
   toObject: {
