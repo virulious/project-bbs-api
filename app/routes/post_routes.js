@@ -6,9 +6,11 @@ const passport = require('passport')
 const router = express.Router()
 // require post model
 const User = require('./../models/user')
+const Post = require('./../models/posts')
 // const Post = require('./../models/posts')
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
+const checkOwnership = customErrors.checkOwnership
 const requireToken = passport.authenticate('bearer', { session: false })
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
@@ -46,21 +48,38 @@ router.get('/posts', requireToken, (req, res, next) => {
 
 // Return a single post queried by ID
 router.get('/posts/:id', requireToken, (req, res, next) => {
-  console.log(req.params.id)
   const postId = req.params.id
   // Find the user
   User.findById(req.user.id)
     .then(handle404)
     .then(user => {
-      return user.posts.findById(postId)
+      return user.posts.id(postId)
     })
-    .then(post => res.status(200).json({post: post}))
+    .then(post => {
+      console.log(post)
+      res.status(200).json({posts: post})
+    })
     .catch(next)
 })
 
 // Update a post
 router.patch('/posts/:id', requireToken, (req, res, next) => {
-
+  const postId = req.body.post.id
+  const newTitle = req.body.post.title
+  const newBody = req.body.post.body
+  // Find the user
+  User.findById(req.user.id)
+    .then(handle404)
+    .then(user => {
+      const post = user.posts.id(postId)
+      checkOwnership(post)
+      post.title = newTitle
+      post.body = newBody
+      return user.save()
+    })
+    // if that succeeded, return 204 and no JSON
+    .then(() => res.sendStatus(204))
+    .catch(next)
 })
 
 // Delete a post
@@ -71,8 +90,10 @@ router.delete('/posts/:id', requireToken, (req, res, next) => {
   User.findById(req.user.id)
     // Check if the post ID exists
     .then(handle404)
-    // destroy the book
+    // pull the post
     .then(user => {
+      const post = user.posts.id(postId)
+      checkOwnership(post)
       user.posts.pull(postId)
       return user.save()
     })

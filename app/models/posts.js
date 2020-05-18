@@ -4,14 +4,13 @@ const Schema = mongoose.Schema
 const postSchema = new Schema({
   title: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   body: {
     type: String,
     required: true
   },
-  user: {
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
