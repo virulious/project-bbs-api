@@ -4,14 +4,13 @@
 
 This application allows users to
 post comments, reply to comments,
-and read comments. It works as a
-bbs.
+and read comments.
 
 ## Important Links
 
 - [Other Repo]https://github.com/virulious/project-bbs-client
-- [Deployed API]https://git.heroku.com/young-eyrie-49492.git
-- [Deployed Client](www.link.com)
+- [Deployed API]https://young-eyrie-49492.herokuapp.com/
+- [Deployed Client]https://virulious.github.io/project-bbs-client/
 
 ## Planning Story
 
