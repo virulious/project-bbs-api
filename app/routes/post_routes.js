@@ -45,16 +45,21 @@ router.get('/posts', requireToken, (req, res, next) => {
 
 // Return a single post queried by ID
 router.get('/posts/:id', requireToken, (req, res, next) => {
-  const postId = req.query.posts.title
-  console.log(postId)
+  console.log(req.params.id)
+  const postId = req.params.id
   // Find the user
   User.findById(req.user.id)
     .then(handle404)
     .then(user => {
-      return user.posts.find(postId)
+      return user.posts.findById(postId)
     })
     .then(post => res.status(200).json({post: post}))
     .catch(next)
+})
+
+// Update a post
+router.patch('/posts/:id', requireToken, (req, res, next) => {
+
 })
 
 // Delete a post

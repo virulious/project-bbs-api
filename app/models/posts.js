@@ -11,7 +11,7 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  commenter: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
