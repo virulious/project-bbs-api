@@ -18,6 +18,7 @@ const requireOwnership = customErrors.requireOwnership
 router.post('/posts', requireToken, (req, res, next) => {
   // Use express to json to acquire req.body.post and define the object in post
   const post = req.body.post
+  post.user = req.user.id
   req.body.post.owner = req.user.id
   // Stores the new post in the mongo db
   User.findById(req.body.post.owner)
