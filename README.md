@@ -10,7 +10,7 @@ bbs.
 ## Important Links
 
 - [Other Repo]https://github.com/virulious/project-bbs-client
-- [Deployed API](www.link.com)
+- [Deployed API]https://git.heroku.com/young-eyrie-49492.git
 - [Deployed Client](www.link.com)
 
 ## Planning Story
@@ -35,8 +35,8 @@ bbs.
 
 ### Unsolved Problems
 
-- Still need to ....
-- Would like to eventually ....
+- Still need to edit posts with router.update
+- Would like to eventually add comments to posts
 
 ## Images
 
