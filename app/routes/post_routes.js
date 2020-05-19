@@ -56,7 +56,6 @@ router.get('/posts/:id', requireToken, (req, res, next) => {
       return user.posts.id(postId)
     })
     .then(post => {
-      console.log(post)
       res.status(200).json({posts: post})
     })
     .catch(next)

@@ -14,7 +14,9 @@ and read comments.
 
 ## Planning Story
 
-
+- Plan out the layout with a wireframe
+- Plan out resource relations with an ERD
+- Review past projects for guidance
 
 ### User Stories
 
@@ -34,8 +36,10 @@ and read comments.
 
 ### Unsolved Problems
 
-- Still need to edit posts with router.update
-- Would like to eventually add comments to posts
+- Still need to edit posts with router.update (completed)
+- Would like to eventually add comments to posts as a subdocument
+- Would like to create a route to show a post by title
+- Would like to create post catagories for further organization
 
 ## Images
 
